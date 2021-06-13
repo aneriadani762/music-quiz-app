@@ -17,12 +17,13 @@ let questions = [];
 fetch("https://opentdb.com/api.php?amount=10&category=12&difficulty=easy&type=multiple")
     .then(response => {
         return response.json();
-})
-    .then(loadedQuestions => {
+    })
+    .then((loadedQuestions) => {
         questions = loadedQuestions.results.map((loadedQuestion) => {
             const formattedQuestion = {
                 question: loadedQuestion.question,
-};
+            };
+
         const answerChoices = [...loadedQuestion.incorrect_answers];
         formattedQuestion.answer = Math.floor(Math.random() * 4) + 1;
         answerChoices.splice(
@@ -65,7 +66,7 @@ getNewQuestion = () => {
     if(availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS){
         localStorage.setItem("mostRecentScore", score);
         //returns to the endhtml page
-        return window.location.assign('/end.html');   
+        return window.location.assign('end.html');   
     }
 
     questionCounter++;
@@ -80,7 +81,7 @@ getNewQuestion = () => {
 
     question.innerText = currentQuestion.question;
 
-    choices.forEach(choice => {
+    choices.forEach((choice) => {
         const number = choice.dataset['number'];
         choice.innerText = currentQuestion['choice' + number];
     });
@@ -90,7 +91,7 @@ getNewQuestion = () => {
     acceptingAnswers = true;
 };
 
-choices.forEach(choice => {
+choices.forEach((choice) => {
     choice.addEventListener('click', (e) => {
         if(!acceptingAnswers) return;
 
