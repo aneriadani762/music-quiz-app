@@ -41,6 +41,6 @@ localStorage.setItem('highScores', JSON.stringify(highScores));
 //goes to index.html
 window.location.assign('/');
 
-alert("Yout Score is Saved!");
+alert("Your Score is Saved!");
 
 };
